@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator Prompt Cerpen Indonesia</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pulse-once {
+      animation: pulseOnce 0.5s ease-in-out;
+    }
+
+    @keyframes pulseOnce {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .toast-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 400px;
+      animation: slideInRight 0.4s ease-out;
+    }
+
+    .toast-notification.hide {
+      animation: slideOutRight 0.4s ease-out forwards;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+    }
+
+    .toast-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .toast-content {
+      flex: 1;
+    }
+
+    .toast-title {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .toast-message {
+      font-size: 13px;
+      opacity: 0.95;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+   <div class="min-h-full w-full py-8 px-4">
+    <div class="max-w-4xl mx-auto"><!-- Header -->
+     <div class="text-center mb-8">
+      <h1 id="pageTitle" class="text-4xl font-bold text-white mb-2">Generator Prompt Cerpen Indonesia</h1>
+      <p id="subtitle" class="text-xl text-white opacity-90">Buat prompt cerpen berkualitas dalam hitungan detik</p>
+     </div><!-- ChatGPT Wrapped Alternative (Hidden after generation) -->
+     <div id="chatgptAlternative" class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg shadow-lg p-6 mb-6 border-2 border-green-200">
+      <p class="text-center text-gray-700 font-semibold mb-3">🤔 Bingung isi formnya? Bikin dengan ChatGPT Wrapped!</p><button id="chatgptWrappedBtn" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> 🎁 Buat Prompt dengan ChatGPT Wrapped </button>
+      <p class="text-sm text-gray-500 text-center italic mt-2">Untuk pengguna ChatGPT yang aktif - lebih cepat tanpa isi form!</p>
+     </div><!-- ChatGPT Wrapped Card (Hidden by default) -->
+     <div id="chatgptCard" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">🎁 ChatGPT Wrapped - Cerpen dari Riwayat Chat Anda</h2><button id="kembaliKeFormBtn" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg text-sm"> ← Kembali ke Form </button>
+      </div>
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg border-2 border-green-200 mb-6">
+       <h3 class="text-lg font-bold text-green-900 mb-3">💡 Untuk Apa Ini?</h3>
+       <p class="text-gray-700 mb-4">Ini untuk Anda yang sering menggunakan ChatGPT! Buat cerpen lebih cepat tanpa isi form cerita. Kisah akan diambil dari percakapan Anda dengan ChatGPT sebagai referensi.</p>
+       <p class="text-sm text-gray-600 font-semibold">⚡ Kelebihan: Cerpen akan lebih personal dan unik berdasarkan pola percakapan Anda</p>
+      </div><!-- Prompt #1 ChatGPT -->
+      <div class="mb-6">
+       <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-gray-800">Prompt #1 - Analisis ChatGPT</h3><button id="copyChatGPT1Btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt </button>
+       </div>
+       <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+        <p class="text-gray-800 leading-relaxed whitespace-pre-wrap">Analisis seluruh riwayat chat kita sejak awal, lalu buat ringkasan profil perilakuku dengan pendekatan kritis dan berbasis pola, bukan deskriptif dangkal. Sajikan hasilnya dalam struktur berikut: Nama saya, beri julukan 1. Top 5 Topik Paling Dominan Jelaskan kenapa topik ini dominan, konteks kemunculannya, dan apa implikasinya terhadap cara berpikirku. 2. Most Random / Outlier Question Pilih pertanyaan yang paling tidak konsisten dengan pola umumnya, lalu analisis kenapa itu muncul (impuls, distraksi, eskapisme, atau eksperimen). 3. Biggest Obsession Identifikasi satu obsesi utama yang paling menyita energi mental (waktu, kedalaman, pengulangan), termasuk sisi produktif dan destruktifnya. 4. Signature Chaos Energy Definisikan ciri khas "chaos" dalam caraku bertanya atau berpindah topik (loncatan ide, kontradiksi, intensitas), dan risiko blind spot yang menyertainya. 5. Recap Bulanan (Timeline Analysis) Buat ringkasan per bulan yang mencakup: 6. Hiperfiksasi utama tiap bulan 7. Topik favorit vs topik yang ditinggalkan 8. Perubahan mood dan intensitas (naik/turun/stagnan) 9. Pola konsistensi vs impulsif 10. Perubahan Arah &amp; Pola Evolusi Jelaskan apakah ada pergeseran tujuan, cara berpikir, atau tingkat kedalaman diskusi dari waktu ke waktu. 11. Blind Spot &amp; Risiko Pola Berulang Identifikasi kesalahan atau pola yang berpotensi menghambat progres jika dibiarkan. Gunakan bahasa lugas, analitis, dan jujur. Hindari pujian normatif. Jika datanya tidak cukup kuat untuk suatu kesimpulan, nyatakan secara eksplisit.</p>
+       </div>
+       <div id="copyChatGPT1Notification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+        ✅ Prompt berhasil disalin ke clipboard!
+       </div>
+      </div><!-- Panduan -->
+      <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 mb-6">
+       <h3 class="text-lg font-bold text-blue-900 mb-3">📋 Langkah Selanjutnya</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Salin prompt di atas dengan klik tombol "Salin Prompt"</li>
+        <li>Buka ChatGPT (pastikan Anda sudah punya riwayat chat yang cukup panjang)</li>
+        <li>Paste dan kirim prompt ini ke ChatGPT</li>
+        <li>Tunggu ChatGPT menganalisis riwayat percakapan Anda</li>
+        <li>Setelah selesai, klik tombol "Lanjutkan" di bawah</li>
+       </ol>
+      </div><button id="lanjutkanChatGPT1Btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ▶️ Lanjutkan ke Prompt #2 </button>
+     </div><!-- ChatGPT Prompt #2 Card (Hidden by default) -->
+     <div id="chatgpt2Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Prompt #2 - Generate Cerpen</h2>
+      <div class="bg-yellow-50 p-4 rounded-lg border-2 border-yellow-200 mb-6">
+       <p class="text-gray-700 text-sm"><strong>Catatan:</strong> Prompt ini akan mengisi template cerpen dengan ide tentang Anda yang sudah dianalisis ChatGPT sebelumnya.</p>
+      </div>
+      <div class="mb-6">
+       <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-gray-800">Prompt #2 - Ke ChatGPT</h3><button id="copyChatGPT2Btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt </button>
+       </div>
+       <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+        <p id="chatgpt2PromptText" class="text-gray-800 leading-relaxed whitespace-pre-wrap">Dengan ide tentang saya, isilah placeholder prompt ini (yang bukan placeholder jangan diubah): --- Buatlah sebuah cerita pendek (cerpen) dalam bahasa Indonesia yang lengkap dan berkualitas tinggi, dengan panjang sekitar 1500 kata (minimal 1400 kata, maksimal 1600 kata). Cerpen harus memenuhi semua syarat utama untuk disebut cerpen: struktur cerita yang lengkap dengan pengenalan, konflik, klimaks, resolusi; fokus pada satu ide utama dengan plot utama yang sederhana; karakter terbatas (1-3 tokoh utama) dengan pengembangan cepat; bahasa yang ringkas, efisien, dan imajinatif; serta akhir yang memuaskan, mungkin dengan twist atau kesan mendalam yang logis. Cerpen harus mencakup semua unsur intrinsik cerpen secara seimbang: - **Tema**: [MASUKKAN TEMA UTAMA DI SINI] �� Tema harus mendalam, relevan dengan isu universal atau sosial, dan disampaikan secara subtil tanpa dipaksakan. - **Tokoh dan Penokohan**: Karakter utama harus hidup dan relatable, dengan penokohan melalui deskripsi fisik singkat, dialog alami, tindakan, dan motivasi yang jelas. [MASUKKAN DESKRIPSI SINGKAT TOKOH UTAMA DI SINI, misalnya "Seorang pemuda desa bernama Arjuna berusia 20 tahun yang ambisius tapi ragu-ragu"]. - **Alur (Plot)**: Alur harus padat, mengalir lancar, dan fokus pada satu konflik utama tanpa subplot panjang. - **Latar (Setting)**: Latar tempat, waktu, dan suasana harus ringkas tapi mendukung mood cerita, seperti deskripsi sensorik yang tajam. [MASUKKAN LATAR BELAKANG DI SINI, misalnya "Sebuah kampung kecil di pinggir kota Jakarta pada tahun 2025, di tengah pandemi ekonomi"]. - **Sudut Pandang**: Gunakan sudut pandang orang ketiga terbatas atau orang pertama untuk kedalaman emosi. [PILIH SUDUT PANDANG DI SINI, misalnya "Orang ketiga terbatas dari perspektif tokoh utama"]. - **Amanat (Pesan Moral)**: Pesan harus tersirat melalui cerita, bukan eksplisit, dan relevan dengan tema. - **Gaya Bahasa**: Gunakan bahasa yang indah, efisien, dengan elemen sastra seperti metafora, simile, dialog yang hidup, dan ritme kalimat yang variatif untuk membangun ketegangan. Unsur ekstrinsik harus memengaruhi cerita secara halus: latar belakang pengarang (bayangkan sebagai pengarang Indonesia modern yang terinspirasi isu sosial), kondisi sosial/budaya (misalnya mencerminkan realitas Indonesia seperti urbanisasi atau teknologi), nilai moral/etika masyarakat, dan situasi historis jika relevan. Buat cerpen terasa autentik dengan elemen budaya Indonesia, seperti referensi adat atau kehidupan sehari-hari. Struktur cerpen harus mengikuti pola piramida Freytag secara ketat untuk alur yang dramatis: 1. **Pengenalan (Exposition)**: Mulai dengan memperkenalkan tokoh, latar, dan situasi awal dalam sekitar 30% dari keseluruhan cerita. Tarik perhatian pembaca sejak awal dengan hook yang kuat, seperti deskripsi vivid atau dialog misterius. 2. **Pengembangan atau Peningkatan Konflik (Rising Action)**: Bangun konflik secara bertahap dalam 500-600 kata, dengan tantangan yang semakin intens, pengembangan karakter, dan ketegangan yang meningkat. Hindari bagian membosankan; setiap adegan harus mendukung plot. 3. **Klimaks (Climax)**: Titik puncak di sekitar 30% dari keseluruhan cerita, dengan momen krusial seperti keputusan besar, konfrontasi, atau pengungkapan yang penuh emosi dan dramatis. 4. **Penurunan Aksi (Falling Action)**: Redakan ketegangan sekitar 25% dari keseluruhan cerita, jelaskan konsekuensi klimaks, dan hubungkan ke akhir. 5. **Penyelesaian (Resolution atau Denouement)**: Akhiri dengan kata yang memuaskan, mungkin dengan twist tak terduga, epifani, atau akhir ambigu yang meninggalkan kesan. bagian ini sebanyak 15% dari keseluruhan cerita. Pastikan semua elemen terselesaikan secara koheren. Untuk membuat cerpen sangat bagus dan berkualitas tinggi, terapkan prinsip-prinsip ini: - **Originalitas dan Keunikan**: Hindari klise; tambahkan perspektif segar atau elemen tak terduga pada tema, seperti gabungan antara tradisi dan modernitas. - **Pengembangan Karakter yang Kuat**: Buat karakter terasa nyata dengan konflik internal/eksternal yang relatable, sehingga pembaca bisa empati. - **Plot yang Padat dan Menarik**: Setiap kata bermakna; bangun suspense dengan pacing yang tepat, tanpa filler. - **Bahasa dan Gaya Penulisan yang Indah**: Gunakan bahasa sastra yang kaya tapi ringkas, dengan variasi kalimat, imajeri sensorik (penglihatan, suara, rasa), dan nada yang sesuai tema (misalnya melancholis atau tegang). - **Tema yang Mendalam dan Relevan**: Sentuh isu emosional atau sosial yang universal, tapi rooting pada konteks lokal untuk kedalaman. - **Akhir yang Berkesan**: Buat ending yang ngiang-ngiang, dengan twist logis atau pencerahan yang memperkuat tema. - **Kesatuan dan Koherensi**: Pastikan semua unsur saling mendukung tanpa kontradiksi; revisi untuk alur mulus dan bahasa yang halus. Gunakan teknik seperti foreshadowing untuk membangun antisipasi, dan simbolisme untuk lapisan makna tambahan. [PLACEHOLDER BESAR UNTUK KERANGKA CERITA, ALUR SINGKAT, LATAR BELAKANG, ATAU DETAIL SPESIFIK: Di sini, masukkan deskripsi lengkap tentang ide cerita keseluruhan. Misalnya: "Cerita tentang seorang gadis muda dari desa yang pindah ke kota untuk mencari pekerjaan, tapi menghadapi diskriminasi budaya. Alur singkat: Dia mulai optimis (pengenalan), bertemu teman tapi konflik dengan atasan (rising action), klimaks saat dia harus memilih antara identitas dan ambisi, falling action dengan konsekuensi, dan resolusi dengan penerimaan diri. Latar belakang: Terinspirasi dari migrasi urban di Indonesia pasca-pandemi, dengan elemen budaya Jawa seperti nilai gotong royong yang bertabrakan dengan individualisme kota." Buat detail ini sepanjang mungkin untuk membimbing cerpen agar sesuai keinginan, termasuk outline adegan per adegan jika diperlukan.] Pastikan cerpen orisinal, tidak menjiplak karya existing, dan ditulis dalam gaya sastra modern yang engaging. Hitung kata secara akurat di akhir cerpen (tulis "Jumlah kata: [hitung]"). Jika perlu, tambahkan judul yang menarik di awal.</p>
+       </div>
+       <div id="copyChatGPT2Notification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+        ✅ Prompt berhasil disalin ke clipboard!
+       </div>
+      </div>
+      <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 mb-6">
+       <h3 class="text-lg font-bold text-blue-900 mb-3">📋 Panduan Singkat</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Salin Prompt #2 dengan klik tombol "Salin Prompt"</li>
+        <li>Buka ChatGPT dan paste Prompt #2 di <strong>conversation yang sama</strong> (tempat Anda mengirim Prompt #1)</li>
+        <li>ChatGPT akan memberikan prompt cerpen yang sudah terisi dengan ide tentang Anda</li>
+        <li>Salin prompt cerpen tersebut dari ChatGPT</li>
+        <li>Buka Grok AI di <a href="https://grok.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">grok.com</a></li>
+        <li>Paste prompt cerpen ke Grok AI model fast dan kirimkan</li>
+        <li>Respon dari Grok adalah cerpen Anda, copy dan simpan</li>
+       </ol>
+       <p class="mt-4 text-sm text-gray-600 italic">Bacalah perintah di atas, kemudian lanjutkan</p><button id="lanjutkanChatGPT2Btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ▶️ Lanjutkan </button>
+      </div>
+     </div><!-- ChatGPT Prompt #2 Analisis (Hidden by default) -->
+     <div id="chatgptPrompt2AnalisisCard" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Prompt #2 - Analisis &amp; Perbaikan</h2>
+      <form id="chatgptPrompt2Form" class="space-y-4">
+       <div><label for="responChatGPTCerpen" class="block text-sm font-semibold text-gray-700 mb-2">Respon dari Grok (Hasil Cerpen)</label> <textarea id="responChatGPTCerpen" name="responChatGPTCerpen" rows="8" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y" placeholder="Paste hasil cerpen dari Grok AI di sini..." required></textarea>
+       </div><button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ✨ Generate Prompt #2 Analisis </button>
+      </form>
+     </div><!-- Result Card - ChatGPT Prompt #2 Analisis (Hidden by default) -->
+     <div id="resultChatGPT2Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">Prompt #2 Analisis</h2><button id="copyChatGPT2AnalisisBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt #2 Analisis </button>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+       <p id="resultChatGPT2Text" class="text-gray-800 leading-relaxed whitespace-pre-wrap"></p>
+      </div>
+      <div id="copyChatGPT2AnalisisNotification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+       �� Prompt #2 Analisis berhasil disalin ke clipboard!
+      </div><!-- Panduan Conversation Kedua -->
+      <div class="mt-6 bg-orange-50 p-6 rounded-lg border-2 border-orange-200">
+       <h3 class="text-lg font-bold text-orange-900 mb-3">🔄 Langkah Selanjutnya</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Buka <strong>conversation kedua</strong> yang baru di Grok AI (jangan gunakan conversation pertama)</li>
+        <li>Salin Prompt #2 Analisis dengan tombol "Salin Prompt #2 Analisis" di atas</li>
+        <li>Paste Prompt #2 Analisis ke conversation kedua dan kirim ke Grok</li>
+        <li>Ambil respond/hasil analisis dari Grok</li>
+        <li>Salin respond tersebut dan paste ke <strong>conversation pertama</strong> (tempat Anda mendapat cerpen)</li>
+        <li>Grok akan memperbaiki cerpen berdasarkan analisis yang diberikan</li>
+       </ol>
+       <p class="mt-4 text-sm text-gray-600 font-semibold">💡 Tips: Dengan cara ini, Grok bisa memperbaiki cerpen original berdasarkan feedback analisis yang objektif!</p><button id="lanjutkanChatGPT3Btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ����� Lanjutkan ke Prompt #3 </button>
+      </div>
+     </div><!-- Result Card - ChatGPT Prompt #3 (Hidden by default) -->
+     <div id="resultChatGPT3Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">Prompt #3 - Hilangkan Jejak AI</h2><button id="copyChatGPT3Btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt #3 </button>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+       <p id="resultChatGPT3Text" class="text-gray-800 leading-relaxed whitespace-pre-wrap">Selain itu tolong hilangkan atau ganti hal-hal yang akan dideteksi oleh AI detector antara lain: * em dash "—" * tanda petik " tidak tersedia di keyboard secara langsung * tanda ; ada di keyboard, tetapi jarang digunakan oleh manusia biasanya, akan menimbulkan kecurigaan * kalimat dengan pola "ini bukan sekedar x, ini y" sangat AI genic * kalimat dengan pola "x-nya sederhana tetapi y"</p>
+      </div>
+      <div id="copyChatGPT3Notification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+       ✅ Prompt #3 berhasil disalin ke clipboard!
+      </div><!-- Panduan Final -->
+      <div class="mt-6 bg-green-50 p-6 rounded-lg border-2 border-green-200">
+       <h3 class="text-lg font-bold text-green-900 mb-3">✅ Langkah Terakhir</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Salin Prompt #3 dengan tombol "Salin Prompt #3" di atas</li>
+        <li>Paste ke <strong>conversation pertama</strong> (setelah cerpen hasil perbaikan dari Grok)</li>
+        <li>Grok akan membersihkan jejak AI detector dari cerpen Anda</li>
+        <li>Cerpen final siap untuk dipublikasikan! 🎉</li>
+       </ol>
+      </div>
+     </div><!-- Main Card -->
+     <div id="formCard" class="bg-white rounded-lg shadow-2xl p-8 mb-6">
+      <form id="promptForm" class="space-y-6"><!-- Jumlah Kata -->
+       <div><label for="jumlahKata" class="block text-sm font-semibold text-gray-700 mb-2">Jumlah Kata Target</label> <input type="number" id="jumlahKata" name="jumlahKata" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="1500" min="100" max="10000" value="1500" required>
+        <p class="text-xs text-gray-500 mt-1">Range akan otomatis: ±100 kata dari target</p>
+       </div><!-- Tema -->
+       <div><label for="tema" class="block text-sm font-semibold text-gray-700 mb-2">Tema Utama</label> <input type="text" id="tema" name="tema" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="kesepian di era digital" required>
+       </div><!-- Tokoh Section -->
+       <div>
+        <div class="flex justify-between items-center mb-2"><label class="block text-sm font-semibold text-gray-700">Tokoh dan Penokohan</label> <button type="button" id="addTokohBtn" class="bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold py-1 px-3 rounded transition-all"> ➕ Tambah Tokoh </button>
+        </div>
+        <div id="tokohContainer" class="space-y-3"><!-- Tokoh Utama -->
+         <div class="tokoh-item bg-purple-50 p-4 rounded-lg border-2 border-purple-200">
+          <div class="flex justify-between items-center mb-2"><span class="text-sm font-bold text-purple-700">Tokoh Utama (Wajib)</span>
+          </div><input type="text" name="tokoh[]" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Seorang pemuda desa berusia 25 tahun yang ambisius tapi ragu-ragu" required>
+         </div>
+        </div>
+       </div><!-- Latar -->
+       <div><label for="latar" class="block text-sm font-semibold text-gray-700 mb-2">Latar Belakang (Tempat, Waktu, Suasana)</label> <textarea id="latar" name="latar" rows="2" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none" placeholder="Sebuah kampung kecil di pinggir kota Jakarta pada tahun 2025, di tengah pandemi ekonomi" required></textarea>
+       </div><!-- Sudut Pandang -->
+       <div><label for="sudutPandang" class="block text-sm font-semibold text-gray-700 mb-2">Sudut Pandang</label> <input type="text" id="sudutPandang" name="sudutPandang" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Orang ketiga terbatas dari perspektif tokoh utama" required>
+       </div><!-- Kerangka Cerita -->
+       <div><label for="kerangka" class="block text-sm font-semibold text-gray-700 mb-2">Kerangka Cerita / Detail Spesifik (Opsional tapi Disarankan)</label> <textarea id="kerangka" name="kerangka" rows="6" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y" placeholder="Cerita tentang seorang gadis muda dari desa yang pindah ke kota untuk mencari pekerjaan, tapi menghadapi diskriminasi budaya. Alur singkat: Dia mulai optimis (pengenalan), bertemu teman tapi konflik dengan atasan (rising action), klimaks saat dia harus memilih antara identitas dan ambisi, falling action dengan konsekuensi, dan resolusi dengan penerimaan diri. Latar belakang: Terinspirasi dari migrasi urban di Indonesia pasca-pandemi, dengan elemen budaya Jawa seperti nilai gotong royong yang bertabrakan dengan individualisme kota."></textarea>
+        <p class="text-xs text-gray-500 mt-1">Semakin detail, semakin akurat hasil cerpen sesuai keinginan Anda</p>
+       </div><!-- Buttons -->
+       <div class="flex gap-4 pt-4"><button type="submit" id="generateBtn" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ✨ Generate Prompt </button> <button type="button" id="resetBtn" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ↻ Reset </button>
+       </div>
+      </form>
+     </div><!-- Result Card - Prompt #1 (Hidden by default) -->
+     <div id="resultCard" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">Prompt #1</h2><button id="copyBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt </button>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+       <p id="resultText" class="text-gray-800 leading-relaxed whitespace-pre-wrap"></p>
+      </div>
+      <div id="copyNotification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+       ✅ Prompt berhasil disalin ke clipboard!
+      </div><!-- Panduan -->
+      <div class="mt-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+       <h3 class="text-lg font-bold text-blue-900 mb-3">📋 Panduan Singkat</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Salin prompt ini secara utuh dengan klik tombol "salin", pertahankan tanda "**" dan "-" yang ada.</li>
+        <li>Buka Grok AI di <a href="https://grok.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">grok.com</a></li>
+        <li>Paste prompt ini dan kirimkan ke grok AI model fast.</li>
+        <li>Respon dari Grok disebut <strong>"Prompt #1"</strong> tempel ke form Prompt #2</li>
+       </ol>
+       <p class="mt-4 text-sm text-gray-600 italic">Bacalah perintah di atas, kemudian lanjutkan</p><button id="lanjutkanBtn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ▶️ Lanjutkan </button>
+      </div>
+     </div><!-- Form Prompt #2 (Hidden by default) -->
+     <div id="prompt2Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Prompt #2 - Analisis &amp; Perbaikan</h2>
+      <form id="prompt2Form" class="space-y-4">
+       <div><label for="responPrompt1" class="block text-sm font-semibold text-gray-700 mb-2">Respon dari Grok (Hasil Prompt #1)</label> <textarea id="responPrompt1" name="responPrompt1" rows="8" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y" placeholder="Paste hasil cerpen dari Grok AI di sini..." required></textarea>
+       </div><button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ✨ Generate Prompt #2 </button>
+      </form>
+     </div><!-- Result Card - Prompt #2 (Hidden by default) -->
+     <div id="result2Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">Prompt #2</h2><button id="copy2Btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt #2 </button>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+       <p id="result2Text" class="text-gray-800 leading-relaxed whitespace-pre-wrap"></p>
+      </div>
+      <div id="copy2Notification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+       ✅ Prompt #2 berhasil disalin ke clipboard!
+      </div><!-- Panduan Conversation Kedua -->
+      <div class="mt-6 bg-orange-50 p-6 rounded-lg border-2 border-orange-200">
+       <h3 class="text-lg font-bold text-orange-900 mb-3">🔄 Langkah Selanjutnya</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Buka <strong>conversation kedua</strong> yang baru di Grok AI (jangan gunakan conversation pertama)</li>
+        <li>Salin Prompt #2 dengan tombol "Salin Prompt #2" di atas</li>
+        <li>Paste Prompt #2 ke conversation kedua dan kirim ke Grok</li>
+        <li>Ambil respond/hasil analisis dari Grok</li>
+        <li>Salin respond tersebut dan paste ke <strong>conversation pertama</strong> (tempat Anda mengirim Prompt #1)</li>
+        <li>Grok akan memperbaiki cerpen berdasarkan analisis yang diberikan</li>
+       </ol>
+       <p class="mt-4 text-sm text-gray-600 font-semibold">💡 Tips: Dengan cara ini, Grok bisa memperbaiki cerpen original berdasarkan feedback analisis yang objektif!</p><button id="lanjutkan2Btn" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl"> ▶️ Lanjutkan ke Prompt #3 </button>
+      </div>
+     </div><!-- Result Card - Prompt #3 (Hidden by default) -->
+     <div id="result3Card" class="bg-white rounded-lg shadow-2xl p-8 mb-6 hidden">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-2xl font-bold text-gray-800">Prompt #3 - Hilangkan Jejak AI</h2><button id="copy3Btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-md hover:shadow-lg"> 📋 Salin Prompt #3 </button>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg border-2 border-gray-200 max-h-96 overflow-y-auto">
+       <p id="result3Text" class="text-gray-800 leading-relaxed whitespace-pre-wrap">Selain itu tolong hilangkan atau ganti hal-hal yang akan dideteksi oleh AI detector antara lain: * em dash "—" * tanda petik " tidak tersedia di keyboard secara langsung * tanda ; ada di keyboard, tetapi jarang digunakan oleh manusia biasanya, akan menimbulkan kecurigaan * kalimat dengan pola "ini bukan sekedar x, ini y" sangat AI genic * kalimat dengan pola "x-nya sederhana tetapi y"</p>
+      </div>
+      <div id="copy3Notification" class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg hidden">
+       ✅ Prompt #3 berhasil disalin ke clipboard!
+      </div><!-- Panduan Final -->
+      <div class="mt-6 bg-green-50 p-6 rounded-lg border-2 border-green-200">
+       <h3 class="text-lg font-bold text-green-900 mb-3">✅ Langkah Terakhir</h3>
+       <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+        <li>Salin Prompt #3 dengan tombol "Salin Prompt #3" di atas</li>
+        <li>Paste ke <strong>conversation pertama</strong> (setelah cerpen hasil perbaikan dari Grok)</li>
+        <li>Grok akan membersihkan jejak AI detector dari cerpen Anda</li>
+        <li>Cerpen final siap untuk dipublikasikan! 🎉</li>
+       </ol>
+      </div>
+     </div><!-- Info Footer -->
+     <div class="text-center mt-8 text-white opacity-80 text-sm">
+      <p>💡 Gunakan prompt yang dihasilkan dengan AI generator cerita seperti ChatGPT, Grok, atau tool lainnya</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      page_title: "Generator Prompt Cerpen Indonesia",
+      subtitle: "Buat prompt cerpen berkualitas dalam hitungan detik",
+      generate_button: "✨ Generate Prompt",
+      copy_button: "📋 Salin Prompt",
+      reset_button: "🔄 Reset Form",
+      background_color: "#667eea",
+      surface_color: "#ffffff",
+      text_color: "#1f2937",
+      primary_action_color: "#7c3aed",
+      secondary_action_color: "#6b7280"
+    };
+
+    async function onConfigChange(config) {
+      const pageTitle = document.getElementById('pageTitle');
+      const subtitle = document.getElementById('subtitle');
+      const generateBtn = document.getElementById('generateBtn');
+      const copyBtn = document.getElementById('copyBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const app = document.getElementById('app');
+
+      if (pageTitle) pageTitle.textContent = config.page_title || defaultConfig.page_title;
+      if (subtitle) subtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      if (generateBtn) generateBtn.textContent = config.generate_button || defaultConfig.generate_button;
+      if (copyBtn) copyBtn.textContent = config.copy_button || defaultConfig.copy_button;
+      if (resetBtn) resetBtn.textContent = config.reset_button || defaultConfig.reset_button;
+
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const bgGradient = bgColor === "#667eea" 
+        ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        : `linear-gradient(135deg, ${bgColor} 0%, ${adjustColor(bgColor, -20)} 100%)`;
+      
+      if (app) app.style.background = bgGradient;
+
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const primaryHover = adjustColor(primaryColor, -10);
+      
+      if (generateBtn) {
+        generateBtn.style.backgroundColor = primaryColor;
+        generateBtn.onmouseenter = () => generateBtn.style.backgroundColor = primaryHover;
+        generateBtn.onmouseleave = () => generateBtn.style.backgroundColor = primaryColor;
+      }
+
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      const secondaryHover = adjustColor(secondaryColor, -10);
+      
+      if (resetBtn) {
+        resetBtn.style.backgroundColor = secondaryColor;
+        resetBtn.onmouseenter = () => resetBtn.style.backgroundColor = secondaryHover;
+        resetBtn.onmouseleave = () => resetBtn.style.backgroundColor = secondaryColor;
+      }
+    }
+
+    function adjustColor(color, amount) {
+      const clamp = (val) => Math.min(Math.max(val, 0), 255);
+      const num = parseInt(color.replace("#", ""), 16);
+      const r = clamp((num >> 16) + amount);
+      const g = clamp(((num >> 8) & 0x00FF) + amount);
+      const b = clamp((num & 0x0000FF) + amount);
+      return "#" + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["page_title", config.page_title || defaultConfig.page_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["generate_button", config.generate_button || defaultConfig.generate_button],
+          ["copy_button", config.copy_button || defaultConfig.copy_button],
+          ["reset_button", config.reset_button || defaultConfig.reset_button]
+        ])
+      });
+    }
+
+    const form = document.getElementById('promptForm');
+    const resultCard = document.getElementById('resultCard');
+    const resultText = document.getElementById('resultText');
+    const copyBtn = document.getElementById('copyBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const copyNotification = document.getElementById('copyNotification');
+    const addTokohBtn = document.getElementById('addTokohBtn');
+    const tokohContainer = document.getElementById('tokohContainer');
+    const lanjutkanBtn = document.getElementById('lanjutkanBtn');
+    const prompt2Card = document.getElementById('prompt2Card');
+    const prompt2Form = document.getElementById('prompt2Form');
+    const result2Card = document.getElementById('result2Card');
+    const result2Text = document.getElementById('result2Text');
+    const copy2Btn = document.getElementById('copy2Btn');
+    const copy2Notification = document.getElementById('copy2Notification');
+    const lanjutkan2Btn = document.getElementById('lanjutkan2Btn');
+    const result3Card = document.getElementById('result3Card');
+    const result3Text = document.getElementById('result3Text');
+    const copy3Btn = document.getElementById('copy3Btn');
+    const copy3Notification = document.getElementById('copy3Notification');
+    
+    const chatgptAlternative = document.getElementById('chatgptAlternative');
+    const formCard = document.getElementById('formCard');
+    const chatgptWrappedBtn = document.getElementById('chatgptWrappedBtn');
+    const chatgptCard = document.getElementById('chatgptCard');
+    const chatgpt2Card = document.getElementById('chatgpt2Card');
+    const copyChatGPT1Btn = document.getElementById('copyChatGPT1Btn');
+    const copyChatGPT1Notification = document.getElementById('copyChatGPT1Notification');
+    const copyChatGPT2Btn = document.getElementById('copyChatGPT2Btn');
+    const copyChatGPT2Notification = document.getElementById('copyChatGPT2Notification');
+    const lanjutkanChatGPT1Btn = document.getElementById('lanjutkanChatGPT1Btn');
+    const lanjutkanChatGPT2Btn = document.getElementById('lanjutkanChatGPT2Btn');
+    const lanjutkanChatGPT3Btn = document.getElementById('lanjutkanChatGPT3Btn');
+    const kembaliKeFormBtn = document.getElementById('kembaliKeFormBtn');
+    const chatgptPrompt2AnalisisCard = document.getElementById('chatgptPrompt2AnalisisCard');
+    const chatgptPrompt2Form = document.getElementById('chatgptPrompt2Form');
+    const resultChatGPT2Card = document.getElementById('resultChatGPT2Card');
+    const resultChatGPT2Text = document.getElementById('resultChatGPT2Text');
+    const copyChatGPT2AnalisisBtn = document.getElementById('copyChatGPT2AnalisisBtn');
+    const copyChatGPT2AnalisisNotification = document.getElementById('copyChatGPT2AnalisisNotification');
+    const resultChatGPT3Card = document.getElementById('resultChatGPT3Card');
+    const copyChatGPT3Btn = document.getElementById('copyChatGPT3Btn');
+    const copyChatGPT3Notification = document.getElementById('copyChatGPT3Notification');
+    
+    let tokohCounter = 1;
+
+    // Toast Notification Function
+    function showToast(title, message) {
+      // Remove existing toast if any
+      const existingToast = document.querySelector('.toast-notification');
+      if (existingToast) {
+        existingToast.remove();
+      }
+
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.className = 'toast-notification';
+      toast.innerHTML = `
+        <div class="toast-icon">✅</div>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+      `;
+
+      document.body.appendChild(toast);
+
+      // Auto remove after 4 seconds
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => {
+          toast.remove();
+        }, 400);
+      }, 4000);
+    }
+
+    // Show ChatGPT Wrapped
+    chatgptWrappedBtn.addEventListener('click', function() {
+      formCard.classList.add('hidden');
+      chatgptAlternative.classList.add('hidden');
+      chatgptCard.classList.remove('hidden');
+      chatgptCard.classList.add('fade-in');
+      chatgptCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Kembali ke Form
+    kembaliKeFormBtn.addEventListener('click', function() {
+      chatgptCard.classList.add('hidden');
+      chatgpt2Card.classList.add('hidden');
+      chatgptPrompt2AnalisisCard.classList.add('hidden');
+      resultChatGPT2Card.classList.add('hidden');
+      resultChatGPT3Card.classList.add('hidden');
+      copyChatGPT1Notification.classList.add('hidden');
+      copyChatGPT2Notification.classList.add('hidden');
+      copyChatGPT2AnalisisNotification.classList.add('hidden');
+      copyChatGPT3Notification.classList.add('hidden');
+      formCard.classList.remove('hidden');
+      chatgptAlternative.classList.remove('hidden');
+      formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Show ChatGPT Prompt #2
+    lanjutkanChatGPT1Btn.addEventListener('click', function() {
+      chatgpt2Card.classList.remove('hidden');
+      chatgpt2Card.classList.add('fade-in');
+      chatgpt2Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Show ChatGPT Prompt #2 Analisis Form
+    lanjutkanChatGPT2Btn.addEventListener('click', function() {
+      chatgptPrompt2AnalisisCard.classList.remove('hidden');
+      chatgptPrompt2AnalisisCard.classList.add('fade-in');
+      chatgptPrompt2AnalisisCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Show ChatGPT Prompt #3
+    lanjutkanChatGPT3Btn.addEventListener('click', function() {
+      resultChatGPT3Card.classList.remove('hidden');
+      resultChatGPT3Card.classList.add('fade-in');
+      resultChatGPT3Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Copy ChatGPT Prompt #1
+    copyChatGPT1Btn.addEventListener('click', function() {
+      const promptContainer = chatgptCard.querySelector('.bg-gray-50 p');
+      
+      if (!promptContainer) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      const text = promptContainer.textContent || promptContainer.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan refresh halaman.');
+        return;
+      }
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt ChatGPT Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copyChatGPT1Btn.classList.add('pulse-once');
+          setTimeout(() => copyChatGPT1Btn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopyChatGPT1Text(text);
+        });
+      } else {
+        fallbackCopyChatGPT1Text(text);
+      }
+      
+      function fallbackCopyChatGPT1Text(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt ChatGPT Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copyChatGPT1Btn.classList.add('pulse-once');
+            setTimeout(() => copyChatGPT1Btn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Copy ChatGPT Prompt #2
+    copyChatGPT2Btn.addEventListener('click', function() {
+      const textElement = document.getElementById('chatgpt2PromptText');
+      
+      if (!textElement) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      const text = textElement.textContent || textElement.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan refresh halaman.');
+        return;
+      }
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt ChatGPT #2 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copyChatGPT2Btn.classList.add('pulse-once');
+          setTimeout(() => copyChatGPT2Btn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopyChatGPT2Text(text);
+        });
+      } else {
+        fallbackCopyChatGPT2Text(text);
+      }
+      
+      function fallbackCopyChatGPT2Text(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt ChatGPT #2 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copyChatGPT2Btn.classList.add('pulse-once');
+            setTimeout(() => copyChatGPT2Btn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Generate ChatGPT Prompt #2 Analisis
+    chatgptPrompt2Form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(chatgptPrompt2Form);
+      const responChatGPTCerpen = formData.get('responChatGPTCerpen');
+      
+      const prompt2Analisis = `## cerpen ini dibuat oleh AI, dan tentu saja tidak sempurna dan sudah pasti ditolak oleh publisher karena suatu alasan isinya. coba kamu analisis mengapa ini akan ditolak, dan bagaimana seharusnya memperbaiki.
+
+${responChatGPTCerpen}`;
+      
+      resultChatGPT2Text.textContent = prompt2Analisis;
+      resultChatGPT2Card.classList.remove('hidden');
+      resultChatGPT2Card.classList.add('fade-in');
+      resultChatGPT2Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Copy ChatGPT Prompt #2 Analisis
+    copyChatGPT2AnalisisBtn.addEventListener('click', function() {
+      const textElement = document.getElementById('resultChatGPT2Text');
+      
+      if (!textElement) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      const text = textElement.textContent || textElement.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan generate prompt terlebih dahulu.');
+        return;
+      }
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt #2 Analisis Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copyChatGPT2AnalisisBtn.classList.add('pulse-once');
+          setTimeout(() => copyChatGPT2AnalisisBtn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopyChatGPT2AnalisisText(text);
+        });
+      } else {
+        fallbackCopyChatGPT2AnalisisText(text);
+      }
+      
+      function fallbackCopyChatGPT2AnalisisText(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt #2 Analisis Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copyChatGPT2AnalisisBtn.classList.add('pulse-once');
+            setTimeout(() => copyChatGPT2AnalisisBtn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Copy ChatGPT Prompt #3
+    copyChatGPT3Btn.addEventListener('click', function() {
+      const textElement = document.getElementById('resultChatGPT3Text');
+      
+      if (!textElement) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      const text = textElement.textContent || textElement.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan refresh halaman.');
+        return;
+      }
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt #3 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copyChatGPT3Btn.classList.add('pulse-once');
+          setTimeout(() => copyChatGPT3Btn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopyChatGPT3Text(text);
+        });
+      } else {
+        fallbackCopyChatGPT3Text(text);
+      }
+      
+      function fallbackCopyChatGPT3Text(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt #3 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copyChatGPT3Btn.classList.add('pulse-once');
+            setTimeout(() => copyChatGPT3Btn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Show Prompt #2 form
+    lanjutkanBtn.addEventListener('click', function() {
+      prompt2Card.classList.remove('hidden');
+      prompt2Card.classList.add('fade-in');
+      prompt2Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Show Prompt #3
+    lanjutkan2Btn.addEventListener('click', function() {
+      result3Card.classList.remove('hidden');
+      result3Card.classList.add('fade-in');
+      result3Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Generate Prompt #2
+    prompt2Form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(prompt2Form);
+      const responPrompt1 = formData.get('responPrompt1');
+      
+      const prompt2 = `## cerpen ini dibuat oleh AI, dan tentu saja tidak sempurna dan sudah pasti ditolak oleh publisher karena suatu alasan isinya. coba kamu analisis mengapa ini akan ditolak, dan bagaimana seharusnya memperbaiki.
+
+${responPrompt1}`;
+      
+      result2Text.textContent = prompt2;
+      result2Card.classList.remove('hidden');
+      result2Card.classList.add('fade-in');
+      result2Card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Copy Prompt #2
+    copy2Btn.addEventListener('click', function() {
+      // Get the element reference fresh each time
+      const result2Element = document.getElementById('result2Text');
+      
+      if (!result2Element) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      // Get text content with fallback methods
+      const text = result2Element.textContent || result2Element.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan generate prompt terlebih dahulu.');
+        return;
+      }
+      
+      // Try to copy with multiple fallback methods
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt #2 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copy2Btn.classList.add('pulse-once');
+          setTimeout(() => copy2Btn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          // Fallback to old method
+          fallbackCopy2Text(text);
+        });
+      } else {
+        // Use fallback method
+        fallbackCopy2Text(text);
+      }
+      
+      function fallbackCopy2Text(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt #2 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copy2Btn.classList.add('pulse-once');
+            setTimeout(() => copy2Btn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Copy Prompt #3
+    copy3Btn.addEventListener('click', function() {
+      const result3Element = document.getElementById('result3Text');
+      
+      if (!result3Element) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      const text = result3Element.textContent || result3Element.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan refresh halaman.');
+        return;
+      }
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt #3 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copy3Btn.classList.add('pulse-once');
+          setTimeout(() => copy3Btn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopy3Text(text);
+        });
+      } else {
+        fallbackCopy3Text(text);
+      }
+      
+      function fallbackCopy3Text(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt #3 Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copy3Btn.classList.add('pulse-once');
+            setTimeout(() => copy3Btn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    // Add additional character function
+    addTokohBtn.addEventListener('click', function() {
+      tokohCounter++;
+      const tokohDiv = document.createElement('div');
+      tokohDiv.className = 'tokoh-item bg-blue-50 p-4 rounded-lg border-2 border-blue-200 fade-in';
+      tokohDiv.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm font-bold text-blue-700">Tokoh Tambahan ${tokohCounter - 1}</span>
+          <button 
+            type="button" 
+            class="remove-tokoh bg-red-500 hover:bg-red-600 text-white text-xs font-semibold py-1 px-2 rounded transition-all"
+          >
+            ✕ Hapus
+          </button>
+        </div>
+        <input 
+          type="text" 
+          name="tokoh[]"
+          class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          placeholder="Seorang guru tua yang bijaksana dan menjadi mentor"
+        >
+      `;
+      
+      tokohContainer.appendChild(tokohDiv);
+      
+      // Add remove functionality
+      const removeBtn = tokohDiv.querySelector('.remove-tokoh');
+      removeBtn.addEventListener('click', function() {
+        tokohDiv.remove();
+        tokohCounter--;
+        // Update numbering
+        const allTokoh = tokohContainer.querySelectorAll('.tokoh-item');
+        allTokoh.forEach((item, index) => {
+          if (index > 0) {
+            const label = item.querySelector('span');
+            if (label) label.textContent = `Tokoh Tambahan ${index}`;
+          }
+        });
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const jumlahKata = parseInt(formData.get('jumlahKata'));
+      const minKata = jumlahKata - 100;
+      const maxKata = jumlahKata + 100;
+      const tema = formData.get('tema');
+      const latar = formData.get('latar');
+      const sudutPandang = formData.get('sudutPandang');
+      
+      // Get all tokoh
+      const tokohList = formData.getAll('tokoh[]').filter(t => t.trim() !== '');
+      let tokohText = '';
+      if (tokohList.length > 0) {
+        tokohText = `Tokoh Utama (Protagonis): ${tokohList[0]}`;
+        if (tokohList.length > 1) {
+          tokohText += `. Tokoh lainnya: ${tokohList.slice(1).join(', ')}`;
+        }
+      }
+      
+      const kerangka = formData.get('kerangka');
+      const kerangkaText = kerangka ? `\n\n${kerangka}` : '';
+      
+      const prompt = `Buatlah sebuah cerita pendek (cerpen) dalam bahasa Indonesia yang lengkap dan berkualitas tinggi, dengan panjang sekitar ${jumlahKata} kata (minimal ${minKata} kata, maksimal ${maxKata} kata). Cerpen harus memenuhi semua syarat utama untuk disebut cerpen, struktur cerita yang lengkap dengan pengenalan, konflik, klimaks, resolusi; fokus pada satu ide utama dengan plot utama; karakter dengan pengembangan cepat; bahasa yang ringkas, efisien, dan imajinatif; serta akhir yang memuaskan, mungkin dengan twist atau kesan mendalam yang logis.
+
+Cerpen harus mencakup semua unsur intrinsik cerpen secara seimbang:
+- **Tema**: ${tema} – Tema harus mendalam, relevan dengan isu universal atau sosial, dan disampaikan secara subtil tanpa dipaksakan.
+- **Tokoh dan Penokohan**: Karakter utama harus hidup dan relatable, dengan penokohan melalui deskripsi fisik singkat, dialog alami, tindakan, dan motivasi yang jelas. ${tokohText}
+- **Alur (Plot)**: Alur harus padat, mengalir lancar, dan fokus pada satu konflik utama tanpa subplot panjang.
+- **Latar (Setting)**: Latar tempat, waktu, dan suasana harus ringkas tapi mendukung mood cerita, seperti deskripsi sensorik yang tajam. ${latar}
+- **Sudut Pandang**: ${sudutPandang}
+- **Amanat (Pesan Moral)**: Pesan harus tersirat melalui cerita, bukan eksplisit, dan relevan dengan tema.
+- **Gaya Bahasa**: Gunakan bahasa yang indah, efisien, dengan elemen sastra seperti metafora, simile, dialog yang hidup, dan ritme kalimat yang variatif untuk membangun ketegangan.
+
+Unsur ekstrinsik harus memengaruhi cerita secara halus: latar belakang pengarang (bayangkan sebagai pengarang Indonesia modern yang terinspirasi isu sosial), kondisi sosial/budaya (misalnya mencerminkan realitas Indonesia seperti urbanisasi atau teknologi), nilai moral/etika masyarakat, dan situasi historis jika relevan. Buat cerpen terasa autentik dengan elemen budaya Indonesia, seperti referensi adat atau kehidupan sehari-hari.
+
+Struktur cerpen harus mengikuti pola piramida Freytag secara ketat untuk alur yang dramatis:
+
+1. **Pengenalan (Exposition)**: Mulai dengan memperkenalkan tokoh, latar, dan situasi awal dalam sekitar 30% dari keseluruhan cerita. Tarik perhatian pembaca sejak awal dengan hook yang kuat, seperti deskripsi vivid atau dialog misterius.
+2. **Pengembangan atau Peningkatan Konflik (Rising Action)**: Bangun konflik secara bertahap dalam 500-600 kata, dengan tantangan yang semakin intens, pengembangan karakter, dan ketegangan yang meningkat. Hindari bagian membosankan; setiap adegan harus mendukung plot.
+3. **Klimaks (Climax)**: Titik puncak di sekitar 30% dari keseluruhan cerita, dengan momen krusial seperti keputusan besar, konfrontasi, atau pengungkapan yang penuh emosi dan dramatis.
+4. **Penurunan Aksi (Falling Action)**: Redakan ketegangan sekitar 25% dari keseluruhan cerita, jelaskan konsekuensi klimaks, dan hubungkan ke akhir.
+5. **Penyelesaian (Resolution atau Denouement)**: Akhiri dengan kata yang memuaskan, mungkin dengan twist tak terduga, epifani, atau akhir ambigu yang meninggalkan kesan. bagian ini sebanyak 15% dari keseluruhan cerita. Pastikan semua elemen terselesaikan secara koheren.
+
+Untuk membuat cerpen sangat bagus dan berkualitas tinggi, terapkan prinsip-prinsip ini:
+
+- **Originalitas dan Keunikan**: Hindari klise; tambahkan perspektif segar atau elemen tak terduga pada tema, seperti gabungan antara tradisi dan modernitas.
+- **Pengembangan Karakter yang Kuat**: Buat karakter terasa nyata dengan konflik internal/eksternal yang relatable, sehingga pembaca bisa empati.
+- **Plot yang Padat dan Menarik**: Setiap kata bermakna; bangun suspense dengan pacing yang tepat, tanpa filler.
+- **Bahasa dan Gaya Penulisan yang Indah**: Gunakan bahasa sastra yang kaya tapi ringkas, dengan variasi kalimat, imajeri sensorik (penglihatan, suara, rasa), dan nada yang sesuai tema (misalnya melancholis atau tegang).
+- **Tema yang Mendalam dan Relevan**: Sentuh isu emosional atau sosial yang universal, tapi rooting pada konteks lokal untuk kedalaman.
+- **Akhir yang Berkesan**: Buat ending yang ngiang-ngiang, dengan twist logis atau pencerahan yang memperkuat tema.
+- **Kesatuan dan Koherensi**: Pastikan semua unsur saling mendukung tanpa kontradiksi; revisi untuk alur mulus dan bahasa yang halus. Gunakan teknik seperti foreshadowing untuk membangun antisipasi, dan simbolisme untuk lapisan makna tambahan.
+${kerangkaText}
+
+Pastikan cerpen orisinal, tidak menjiplak karya existing, dan ditulis dalam gaya sastra modern yang engaging. Hitung kata secara akurat di akhir cerpen (tulis "Jumlah kata: [hitung]"). Jika perlu, tambahkan judul yang menarik di awal.`;
+      
+      resultText.textContent = prompt;
+      
+      // Hide chatgpt alternative after generation
+      chatgptAlternative.classList.add('hidden');
+      
+      resultCard.classList.remove('hidden');
+      resultCard.classList.add('fade-in');
+      
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    copyBtn.addEventListener('click', function() {
+      // Get the element reference fresh each time
+      const resultElement = document.getElementById('resultText');
+      
+      if (!resultElement) {
+        alert('❌ Elemen tidak ditemukan. Silakan refresh halaman.');
+        return;
+      }
+      
+      // Get text content with fallback methods
+      const text = resultElement.textContent || resultElement.innerText || '';
+      
+      if (!text || text.trim() === '') {
+        alert('❌ Teks prompt kosong. Silakan generate prompt terlebih dahulu.');
+        return;
+      }
+      
+      // Try to copy with multiple fallback methods
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Prompt Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+          copyBtn.classList.add('pulse-once');
+          setTimeout(() => copyBtn.classList.remove('pulse-once'), 500);
+        }).catch(err => {
+          fallbackCopyText(text);
+        });
+      } else {
+        fallbackCopyText(text);
+      }
+      
+      function fallbackCopyText(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('Prompt Berhasil Disalin! ✨', '📋 Silakan baca panduan langkah selanjutnya di bawah');
+            copyBtn.classList.add('pulse-once');
+            setTimeout(() => copyBtn.classList.remove('pulse-once'), 500);
+          } else {
+            alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          }
+        } catch (err) {
+          alert('❌ Gagal menyalin. Silakan salin manual dengan Ctrl+C.');
+          console.error('Copy failed:', err);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+
+    resetBtn.addEventListener('click', function() {
+      form.reset();
+      
+      // Hide all cards
+      chatgptAlternative.classList.remove('hidden');
+      formCard.classList.remove('hidden');
+      chatgptCard.classList.add('hidden');
+      chatgpt2Card.classList.add('hidden');
+      chatgptPrompt2AnalisisCard.classList.add('hidden');
+      resultChatGPT2Card.classList.add('hidden');
+      resultChatGPT3Card.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      copyNotification.classList.add('hidden');
+      prompt2Card.classList.add('hidden');
+      result2Card.classList.add('hidden');
+      copy2Notification.classList.add('hidden');
+      result3Card.classList.add('hidden');
+      copy3Notification.classList.add('hidden');
+      copyChatGPT1Notification.classList.add('hidden');
+      copyChatGPT2Notification.classList.add('hidden');
+      copyChatGPT2AnalisisNotification.classList.add('hidden');
+      copyChatGPT3Notification.classList.add('hidden');
+      prompt2Form.reset();
+      chatgptPrompt2Form.reset();
+      
+      // Reset tokoh to only main character
+      const allTokoh = tokohContainer.querySelectorAll('.tokoh-item');
+      allTokoh.forEach((item, index) => {
+        if (index > 0) item.remove();
+      });
+      tokohCounter = 1;
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b67c0adf5f4ce5b',t:'MTc2NzE2Mjg4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
