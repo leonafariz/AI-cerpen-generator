@@ -1,0 +1,2 @@
+# AI-cerpen-generator
+Manual
